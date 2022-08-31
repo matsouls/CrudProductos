@@ -1,0 +1,135 @@
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" 
+crossorigin="anonymous">
+
+
+
+<div class="container app">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="text-center mb-5 ">
+         {{title}}
+       </h1>
+    </div>
+    <div class="col-sm-4">
+      <div class="alert alert-success alert-dismissable " *ngIf="msg">
+        <a href="#" class="close" (click)="CerrarAlerta()" >&times;</a>
+        {{msg}}
+      </div>
+    </div>
+   
+  </div>
+  <div class="row"> 
+    <div class="col-sm-4">
+      <img
+      width="300"
+      alt="Angular Logo"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDSbphERiaNByyQHv3E1re2XbNss0-3CrHQQ&usqp=CAU"
+    />
+    </div>
+    <div class="col-sm-8">
+      <h2>Crear Datos:</h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="Producto" class="control-label col-sm-2">
+            Producto
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="Producto" id="Producto" [(ngModel)]="model.Producto" placeholder="Ingrese un Producto">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Categoria" class="control-label col-sm-2">
+            Categoria
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="Categoria" id="Categoria" [(ngModel)]="model.Categoria" placeholder="Ingrese un Categoria del Producto">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="marca" class="control-label col-sm-2">
+            Marca
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="Categoria" id="Categoria" [(ngModel)]="model.marca" placeholder="Ingrese la Marca">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2 mt-2 ">
+            <button type="submit" class="btn btn-success" (click)="addProducto()" >Guardar</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+   </div>
+
+   <div class="row mt-5 ">
+    <div class="col-sm-7">
+      <h2>Todos los Productos: </h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Categoria</th>
+            <th>Marca</th>
+            <th>Acciones</th>
+          </tr>
+          
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let Catalogo of Catalogo; let i = index">
+            <td>{{Catalogo.Producto}}</td>
+            <td>{{Catalogo.Categoria}}</td>
+            <td>{{Catalogo.marca}}</td>
+            <td><a (click)="editProducto(i)" class="btn btn-success ">Editar</a> 
+              <a (click)="deleteProducto(i)" class="btn btn-danger mx-2">Borrar</a>
+            </td>
+            
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+    <div class="col-sm-4 mx-5" [hidden]="EsconderActualizador">
+      <h2>Actualizar Datos:</h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="Producto" class="control-label col-sm-2">
+            Producto
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="Producto" id="Producto" [(ngModel)]="model2.Producto" placeholder="Ingrese un Producto">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Categoria" class="control-label col-sm-2">
+            Categoria
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="Categoria" id="Categoria" [(ngModel)]="model2.Categoria" placeholder="Ingrese un Categoria del Producto">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="marca" class="control-label col-sm-2">
+            Marca
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="marca" id="marca" [(ngModel)]="model2.marca" placeholder="Ingrese la Marca">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2 mt-2 ">
+            <button type="submit" class="btn btn-success" (click)="updateProducto()" >Guardar</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+   </div>
+</div>
+                            
+
+
+  
